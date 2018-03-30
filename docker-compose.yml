@@ -5,8 +5,7 @@ services:
   elasticsearch:
     build:
       context: elasticsearch/
-    imge: 127.0.0.1:5000/elk-elasticsearch
-    image: 
+    image: 127.0.0.1:5000/elk-elasticsearch
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - /var/docker/esdata:/usr/share/elasticsearch/data
@@ -18,7 +17,7 @@ services:
   logstash:
     build:
       context: logstash/
-    imge: 127.0.0.1:5000/elk-logstash
+    image: 127.0.0.1:5000/elk-logstash
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
@@ -32,7 +31,7 @@ services:
   kibana:
     build:
       context: kibana/
-    imge: 127.0.0.1:5000/elk-kibana
+    image: 127.0.0.1:5000/elk-kibana
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
     networks:
