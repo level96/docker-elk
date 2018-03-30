@@ -5,12 +5,11 @@ services:
   elasticsearch:
     build:
       context: elasticsearch/
+    imge: 127.0.0.1:5000/elk-elasticsearch
+    image: 
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - /var/docker/esdata:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx1g -Xms1g"
     networks:
@@ -19,11 +18,10 @@ services:
   logstash:
     build:
       context: logstash/
+    imge: 127.0.0.1:5000/elk-logstash
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
-    ports:
-      - "5000:5000"
     environment:
       LS_JAVA_OPTS: "-Xmx1g -Xms1g"
     networks:
@@ -34,10 +32,9 @@ services:
   kibana:
     build:
       context: kibana/
+    imge: 127.0.0.1:5000/elk-kibana
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
-    ports:
-      - "5601:5601"
     networks:
       - elk
     depends_on:
