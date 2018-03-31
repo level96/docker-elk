@@ -5,4 +5,4 @@ FROM docker.elastic.co/logstash/logstash-oss:6.2.2
 # Example: RUN logstash-plugin install logstash-filter-json
 
 COPY config/logstash.yml /usr/share/logstash/config/logstash.yml
-COPY logstash/pipeline /usr/share/logstash/pipeline
+COPY pipeline /usr/share/logstash/pipeline
